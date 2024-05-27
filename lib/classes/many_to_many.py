@@ -27,7 +27,7 @@ class Author:
     def set_name(self, name):
         if self._name is not None:
             return
-        elif type(name) is not str or len(name) == 0:
+        elif type(name) is not str and len(name) > 0:
             return
         self._name = name
     name = property(get_name, set_name)
@@ -64,7 +64,7 @@ class Magazine:
         return self._category
 
     def set_category(self, category):
-        if type(category)is str and len(category) > 0:
+        if type(category)is str and  len(category) > 0:
             self._category = category
 
     category = property(get_category, set_category)
