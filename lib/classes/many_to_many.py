@@ -1,6 +1,6 @@
 
 class Article:
-    all = []
+    all = list()
 
 
     def __init__(self, author, magazine, title):
@@ -81,4 +81,11 @@ class Magazine:
         return titles if titles else None
 
     def contributing_authors(self):
-        return list(set([article.author for article in self.articles()]))
+      author_counts = {}
+      for article in self.articles():
+          author = article.author
+          author_counts[author] = author_counts.get(author, 0) + 1
+
+      contributing_authors = [author for author, count in author_counts.items() if count > 2]
+
+      return contributing_authors or None
